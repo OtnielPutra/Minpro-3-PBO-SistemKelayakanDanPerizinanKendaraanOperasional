@@ -127,6 +127,12 @@ Fitur Keluar digunakan untuk mengakhiri program. Ketika pengguna memilih menu in
 
 ----
 
+<div align="center">
+  
+# Penjelasan Implementasi
+
+</div>
+
 ## Encapsulation
 
 Encapsulation adalah konsep dalam pemrograman berorientasi objek yang menggabungkan data dan fungsi dalam satu class serta membatasi akses langsung terhadap data tersebut. Tujuannya adalah menjaga keamanan dan keteraturan data sehingga perubahan atau penggunaan data dapat dikontrol melalui mekanisme yang telah ditentukan oleh class.
@@ -218,3 +224,30 @@ Contoh penerapannya dalam struktur program:
 
 `KendaraanTidakLayak`
 → detail kendaraan tidak layak
+
+## Interface
+
+Interface adalah konsep OOP yang digunakan sebagai sebuah “kontrak” atau aturan yang harus diikuti oleh class yang mengimplementasikannya. Interface biasanya berisi method yang menentukan fungsi apa yang harus dimiliki oleh suatu class, sedangkan implementasi detail method tersebut dibuat di dalam class yang menggunakan interface.
+
+Pada program Sistem Monitoring Kendaraan kamu, terdapat 2 interface:
+
+1. `Pemeriksaan`
+
+* Diimplementasikan oleh class `Kendaraan`.
+* Mengatur bahwa setiap kendaraan harus memiliki fungsi untuk melakukan pemeriksaan atau pengecekan status.
+* `Kendaraan` kemudian memberikan implementasi dari fungsi tersebut.
+* Interface ini berkaitan dengan pengecekan apakah kendaraan dalam kondisi `Layak` atau `Tidak Layak`.
+
+2. `Manajemen<T>`
+
+* Diimplementasikan oleh class `Monitoring`.
+* Menentukan fungsi dasar untuk mengelola data kendaraan.
+* Berisi aturan untuk proses menambah data, menghapus data, dan mengambil daftar data.
+* `Monitoring` kemudian mengimplementasikan fungsi-fungsi tersebut sesuai kebutuhan sistem.
+
+Jadi struktur interface pada program kamu adalah:
+
+* `Pemeriksaan` → `Kendaraan`
+* `Manajemen<Kendaraan>` → `Monitoring`
+
+Kesimpulannya, penggunaan interface membuat struktur program lebih teratur karena class yang mengimplementasikan interface harus mengikuti method yang sudah ditentukan. Ini juga membuat program lebih fleksibel karena aturan atau kontrak fungsi dapat dipisahkan dari implementasi detailnya.
