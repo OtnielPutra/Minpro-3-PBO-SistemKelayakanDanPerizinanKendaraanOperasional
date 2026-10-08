@@ -20,7 +20,7 @@ public class Perizinan {
 
         this.nomorIzin = periksaIsi(nomorIzin, "Nomor izin");
         this.platNomor = periksaIsi(platNomor, "Plat nomor");
-        this.jenisIzin = periksaIsi(jenisIzin, "Keterangan ");
+        this.jenisIzin = periksaIsi(jenisIzin, "Keterangan");
         this.tanggalBerlaku = periksaIsi(tanggalBerlaku, "Tanggal berlaku");
     }
 
