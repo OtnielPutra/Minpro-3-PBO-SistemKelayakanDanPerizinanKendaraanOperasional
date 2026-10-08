@@ -125,4 +125,96 @@ Fitur Keluar digunakan untuk mengakhiri program. Ketika pengguna memilih menu in
 
 <img width="475" height="267" alt="image" src="https://github.com/user-attachments/assets/e10e7fe3-de28-472d-9d63-a3304defc8f3" />
 
+----
 
+## Encapsulation
+
+Encapsulation adalah konsep dalam pemrograman berorientasi objek yang menggabungkan data dan fungsi dalam satu class serta membatasi akses langsung terhadap data tersebut. Tujuannya adalah menjaga keamanan dan keteraturan data sehingga perubahan atau penggunaan data dapat dikontrol melalui mekanisme yang telah ditentukan oleh class.
+
+- Kendaraan: Kendaraan: menerapkan encapsulation dengan membuat semua atribut `private` dan mengaksesnya melalui getter/setter. Setter melakukan validasi data seperti jenis hanya huruf, merk tidak boleh kosong, dan tahun harus valid. `platNomor` dan `kondisi` bersifat `final`, sehingga hanya memiliki getter tanpa setter.
+
+- Perizinan: menerapkan encapsulation dengan membuat seluruh atribut private dan mengaksesnya melalui getter dan setter. nomorIzin bersifat final, sehingga hanya memiliki getter tanpa setter. Atribut lainnya dapat diubah melalui setter yang sekaligus melakukan validasi agar data tidak boleh kosong.
+
+- Monitoring: menerapkan encapsulation dengan membuat daftarKendaraan dan daftarPerizinan bersifat private final, sehingga data tidak dapat dimanipulasi langsung dari luar class. Akses data diberikan melalui getter yang menggunakan Collections.unmodifiableList(), sehingga pihak luar hanya dapat membaca data tanpa bisa menambah atau menghapusnya secara langsung. Selain itu, method cariIndex() dan buatKendaraan() dibuat private untuk membatasi akses terhadap proses internal controller.
+
+- KendaraanView: menerapkan encapsulation dengan membuat atribut input bersifat private final, sehingga hanya dapat diakses dan digunakan di dalam class KendaraanView. Atribut tersebut diinisialisasi melalui constructor dan tidak dapat diganti setelah objek dibuat. Selain itu, berbagai method seperti inputText(), inputInteger(), inputPlat(), dan inputTanggal() mengatur proses input dan validasi agar data yang diterima sesuai ketentuan program.
+
+- Animasi: menerapkan encapsulation dengan membuat konstanta PANJANG_BAR bersifat private static final, sehingga nilainya hanya dapat digunakan di dalam class dan tidak dapat diubah. Constructor juga dibuat private agar class ini tidak dapat dibuat menjadi objek dari luar karena hanya digunakan sebagai class utilitas. Selain itu, method tidur() dibuat private karena hanya digunakan untuk kebutuhan internal animasi.
+
+## Inheritance
+
+Inheritance diterapkan untuk membuat class turunan dapat mewarisi atribut dan method dari class induknya. Pada program ini, inheritance digunakan agar data dan fungsi dasar kendaraan cukup dibuat pada satu class, kemudian dapat digunakan oleh class kendaraan yang memiliki kondisi berbeda. Class yang menerapkan inheritance:
+
+- Kendaraan -> sebagai superclass atau class induk yang berisi atribut dan fungsi dasar kendaraan.
+- KendaraanLayak -> sebagai subclass yang mewarisi Kendaraan dan digunakan untuk kendaraan yang layak digunakan.
+- KendaraanTidakLayak -> sebagai subclass yang mewarisi Kendaraan dan digunakan untuk kendaraan yang tidak layak digunakan.
+
+## Polymorphism
+
+Polymorphism adalah konsep OOP yang memungkinkan satu method memiliki bentuk atau perilaku yang berbeda. Dalam program Sistem Monitoring Kendaraan, polymorphism diterapkan dalam dua bentuk, yaitu method overriding dan method overloading. Overriding digunakan ketika subclass memiliki method yang berasal dari superclass tetapi memberikan perilaku yang berbeda, sedangkan overloading digunakan ketika satu class memiliki beberapa method dengan nama yang sama tetapi parameter yang berbeda.
+
+1. Overriding:
+
+- Kendaraan
+
+Bagian getKeterangan() merupakan abstract method yang menjadi dasar bagi subclass untuk memberikan implementasinya masing-masing.
+
+- KendaraanLayak
+
+Bagian getKeterangan() melakukan overriding dari method pada Kendaraan. Implementasinya memberikan keterangan khusus untuk kendaraan yang layak.
+
+- KendaraanTidakLayak
+
+Bagian getKeterangan() juga melakukan overriding, tetapi memberikan keterangan khusus untuk kendaraan yang tidak layak.
+
+- KendaraanView
+
+Pada bagian pemanggilan cekStatus(), class ini menggunakan objek bertipe Kendaraan yang dapat berupa KendaraanLayak atau KendaraanTidakLayak. Jadi, hasil yang ditampilkan dapat berbeda berdasarkan objek sebenarnya.
+
+2. Overloading:
+
+- Kendaraan
+
+Bagian getInfo() memiliki beberapa versi dengan parameter yang berbeda. Ini memungkinkan informasi kendaraan ditampilkan dengan cara yang berbeda sesuai kebutuhan.
+
+- Monitoring
+
+Bagian tambah() memiliki beberapa versi dengan parameter berbeda untuk menambahkan kendaraan.
+Bagian hapus() juga memiliki beberapa versi dengan parameter berbeda, misalnya berdasarkan plat nomor atau index.
+
+- Animasi
+
+Bagian loading() memiliki beberapa versi dengan parameter berbeda, sehingga animasi loading dapat digunakan dengan cara yang berbeda sesuai kebutuhan.
+
+## Abstraction
+
+Abstraction adalah konsep OOP yang digunakan untuk menyembunyikan detail implementasi yang tidak perlu ditampilkan dan hanya menyediakan bagian penting yang dibutuhkan oleh pengguna program. Dalam program Sistem Monitoring Kendaraan kamu, abstraction diterapkan terutama melalui abstract class dan abstract method.
+
+Class yang menerapkan abstraction:
+
+* `Kendaraan`
+
+  * Menjadi `abstract class`, sehingga tidak dapat dibuat menjadi objek secara langsung.
+  * Menyimpan atribut dan fungsi umum yang dimiliki semua kendaraan.
+  * Memiliki `getKeterangan()` sebagai abstract method yang tidak memiliki implementasi langsung dan harus dibuat oleh subclass.
+
+* `KendaraanLayak`
+
+  * Menjadi subclass dari `Kendaraan`.
+  * Mengimplementasikan `getKeterangan()` sesuai kondisi kendaraan yang layak.
+
+* `KendaraanTidakLayak`
+
+  * Menjadi subclass dari `Kendaraan`.
+  * Mengimplementasikan `getKeterangan()` sesuai kondisi kendaraan yang tidak layak.
+
+Contoh penerapannya dalam struktur program:
+
+`Kendaraan`
+→ menyimpan konsep umum kendaraan
+
+`KendaraanLayak`
+→ detail kendaraan layak
+
+`KendaraanTidakLayak`
+→ detail kendaraan tidak layak
