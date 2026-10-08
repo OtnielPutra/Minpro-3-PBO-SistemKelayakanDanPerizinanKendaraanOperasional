@@ -1,6 +1,6 @@
 <div align="center">
   
-# MINPRO 2 PBO
+# MINPRO 3 PBO
 
 </div>
 
@@ -110,7 +110,7 @@ Fitur Hapus Kendaraan digunakan untuk menghapus data kendaraan yang sudah tersim
 
 Fitur Tambah Perizinan digunakan untuk memasukkan data izin kendaraan ke dalam sistem. Pengguna akan mengisi informasi seperti nomor izin, nomor plat kendaraan, jenis izin, dan tanggal berlaku. Setelah data yang dimasukkan valid, sistem akan menyimpan data perizinan sehingga dapat digunakan dan ditampilkan kembali melalui fitur Tampilkan Perizinan.
 
-<img width="342" height="332" alt="image" src="https://github.com/user-attachments/assets/7e7fd00b-edab-44ea-a57f-97b125c693a3" />
+<img width="517" height="630" alt="image" src="https://github.com/user-attachments/assets/a22b6baf-0b02-4b35-a2a4-94d56436caf9" />
 
 ### 7. Tampilkan Perizinan
 
